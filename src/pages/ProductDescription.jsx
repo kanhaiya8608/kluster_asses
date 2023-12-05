@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { StoreContext } from '../store/StoreContext';
 import { storeData } from '../data';
-import Navbar from '../components/Navbar';
-
 
 const ProductDescription = () => {
   const { id } = useParams();
@@ -15,24 +13,36 @@ const ProductDescription = () => {
   if (!productDetails) {
     return <div>Loading...</div>; // Handle the case when the product is not found
   }
+
   const handleAddToBasket = () => {
     addToBasket(productDetails);
     alert('Product added to basket!');
   };
 
   return (
-    <div>
-        <Navbar/>
-      <h2>Product Description Page</h2>
-      <p>Product ID: {productDetails.productId}</p>
-      <p>Name: {productDetails.name}</p>
-      <p>Genre: {productDetails.genre}</p>
-      <p>Author: {productDetails.author}</p>
-      <p>Price: {productDetails.price}</p>
-      <img src={productDetails.image} alt={productDetails.name} />
-      <p>Description: {productDetails.description}</p>
-      {/* Display other product details here */}
-      <button onClick={handleAddToBasket}>Add to Basket</button>
+    <div className="flex h-screen container mx-auto">
+      <div className="container mx-auto p-4">
+        <h2 className="text-6xl py-2 font-semibold mb-4">{productDetails.name}</h2>
+        <div className="grid grid-cols-1 content-center md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Display image on the left for desktop and on top for mobile */}
+          <div className="flex flex-col items-center">
+            <img src={productDetails.image} alt={productDetails.name} className="rounded-md w-full h-84 mb-4" />
+          </div>
+          <div className="flex flex-col text-base md:text-lg justify-center col-span-2 lg:col-span-2">
+            <p className="text-gray-600 mb-2"><span className='font-bold'>ID:</span> {productDetails.productId}</p>
+            <p className="mb-2"><span className='font-bold'>Genre:</span> {productDetails.genre}</p>
+            <p className="mb-2"><span className='font-bold'>Author:</span> {productDetails.author}</p>
+            <p className="mb-2"><span className='font-bold'>Price:</span> {productDetails.price}</p>
+            <p className="mb-4"><span className='font-bold'>Description:</span> {productDetails.description}</p>
+            <button
+  onClick={handleAddToBasket}
+  className="w-full sm:w-60 ml-{n2} bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+>
+              Add to Basket
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

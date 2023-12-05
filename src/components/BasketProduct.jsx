@@ -1,6 +1,8 @@
 // BasketProduct.js
 import React, { useContext } from 'react';
 import { StoreContext } from '../store/StoreContext';
+import { MdOutlineDelete } from "react-icons/md";
+
 
 const BasketProduct = ({ item }) => {
   const { removeFromBasket, updateCount } = useContext(StoreContext);
@@ -19,44 +21,41 @@ const BasketProduct = ({ item }) => {
     removeFromBasket(item);
   };
 
-  const handleRemoveAll = () => {
-    removeAllOfType(item);
-  };
-
   return (
     <div className="flex items-center justify-between border-b border-gray-300 p-4">
-      <div className="flex items-center">
+      <div className="flex items-center space-x-4">
         <img
-          className="mr-4"
+          className="w-16 h-16 object-cover rounded-md"
           src={item.image}
           alt={item.name}
-          style={{ width: '100px', height: '100px' }}
         />
         <div>
-          <p className="font-bold">{item.name}</p>
-          <p className="text-gray-600">${item.price.toFixed(2)}</p>
+          <p className="font-bold text-lg">{item.name}</p>
+          <p className="text-gray-600">₹ {item.price.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
         </div>
       </div>
-    
-      <div className="flex items-center">
-        <p className="mr-4">Count: {item.count ?? 1}</p>
+
+      <div className="flex items-center space-x-4">
+        <div className="flex items-center">
+          <button
+            className="text-blue-500 px-2  rounded-full border border-blue-500 hover:bg-blue-500 hover:text-white transition"
+            onClick={handleIncreaseCount}
+          >
+            +
+          </button>
+          <p className="mx-2">{item.count ?? 1}</p>
+          <button
+            className="text-blue-500 px-2  rounded-full border border-blue-500 hover:bg-blue-500 hover:text-white transition"
+            onClick={handleDecreaseCount}
+          >
+            -
+          </button>
+        </div>
         <button
-          className="bg-blue-500 text-white px-2 py-1 rounded"
-          onClick={handleIncreaseCount}
-        >
-          +
-        </button>
-        <button
-          className="bg-blue-500 text-white px-2 py-1 rounded"
-          onClick={handleDecreaseCount}
-        >
-          -
-        </button>
-        <button
-          className="bg-red-500 text-white px-2 py-1 rounded"
+          className="text-red-500 px-2 py-1 rounded-md border border-red-500 hover:bg-red-500 hover:text-white transition"
           onClick={handleRemove}
         >
-          Remove
+         <MdOutlineDelete size={20}/>
         </button>
       </div>
     </div>

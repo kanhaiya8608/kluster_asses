@@ -1,7 +1,8 @@
+// Shop.js
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
 import { storeData } from '../data';
 import Product from '../components/Product';
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 
 function Shop() {
   const [sortBy, setSortBy] = useState('name');
@@ -43,36 +44,44 @@ function Shop() {
     });
 
   return (
-    <div>
-      <Navbar />
-      <div className='flex flex-col lg:grid lg:grid-cols'>
+    <div className="container mx-auto p-4 mt-8 flex flex-col lg:flex-row">
+      {/* Filters on top for mobile view */}
+      <div className="w-full lg:w-1/4 lg:pr-8">
         <div>
-          <label>
-            Sort by:
-            <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-              <option value='name'>Name</option>
-              <option value='author'>Author</option>
-            </select>
-          </label>
+          <label className="block font-semibold mb-2">Sort by:</label>
+          <select
+            className="border p-2 rounded w-full"
+            value={sortBy}
+            onChange={(e) => handleSortChange(e.target.value)}
+          >
+            <option value="name">Name</option>
+            <option value="author">Author</option>
+          </select>
         </div>
 
-        <div>
-          <label>Filter by genre:</label>
+        <div className="mt-4">
+          <label className="block font-semibold mb-2">Filter by genre:</label>
           {genres.map((genre) => (
-            <label key={genre}>
+            <label key={genre} className="block mb-2">
               <input
-                type='checkbox'
+                type="checkbox"
                 checked={isGenreSelected(genre)}
                 onChange={() => handleGenreToggle(genre)}
+                className="mr-2"
               />
               {genre}
             </label>
           ))}
         </div>
+      </div>
 
-        {sortedStoreData.map((item, i) => (
-          <Product key={i} item={item} />
-        ))}
+      {/* Product results under filters */}
+      <div className="w-full lg:w-3/4 mt-4 lg:mt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {sortedStoreData.map((item, i) => (
+            <Product key={i} item={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

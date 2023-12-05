@@ -15,6 +15,12 @@ const StoreReducer = (state, action) => {
           ...state,
           products: action.payload
         };
+        case 'removeAll':
+          return {
+            ...state,
+            products: [],
+            total: 0,
+          };
       case "update price":
         return {
           ...state,

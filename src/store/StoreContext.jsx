@@ -68,16 +68,12 @@ export const StoreProvider = ({ children }) => {
   };
 
 
-  const removeAllOfType = (product) => {
-    const updatedBasket = state.products.filter(
-      (currentProduct) => currentProduct.name !== product.name
-    );
-
-    updatePrice(updatedBasket);
-
+  const removeAll = () => {
+    // Reset the basket to an empty array and update the total price
+    updatePrice([]);
+    
     dispatch({
-      type: 'remove',
-      payload: updatedBasket,
+      type: 'removeAll',
     });
   };
 
@@ -87,7 +83,7 @@ export const StoreProvider = ({ children }) => {
     addToBasket,
     removeFromBasket,
     updateCount,
-    removeAllOfType,
+    removeAll,
   };
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
