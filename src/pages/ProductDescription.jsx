@@ -33,7 +33,7 @@ const ProductDescription = () => {
             <p className="mb-2"><span className='font-bold'>Genre:</span> {productDetails.genre}</p>
             <p className="mb-2"><span className='font-bold'>Author:</span> {productDetails.author}</p>
             <p className="mb-2"><span className='font-bold'>Price:</span> {productDetails.price}</p>
-            <p className="mb-4"><span className='font-bold'>Description:</span> {productDetails.description}</p>
+            <p className="mb-4 text-justify"><span className='font-bold'>Description:</span> {productDetails.description}</p>
             <button
   onClick={handleAddToBasket}
   className="w-full sm:w-60 ml-{n2} bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
