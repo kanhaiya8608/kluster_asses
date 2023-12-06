@@ -9,7 +9,7 @@ function Footer() {
           href="https://github.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center hover:text-red-400"
+          className="flex items-center hover:text-blue-900"
         >
           <FaGithub className="mr-2" /> GitHub
         </a>
@@ -17,7 +17,7 @@ function Footer() {
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center hover:text-gray-400"
+          className="flex items-center hover:text-blue-900"
         >
           <FaLinkedin className="mr-2" /> LinkedIn
         </a>
