@@ -8,6 +8,7 @@ import ProductDescription from './pages/ProductDescription';
 import Shop from './pages/Shop';
 import Layout from './components/shared/Layout';
 import Author from './pages/Author';
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/author" element={<Author />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/product/:name/:id" element={<ProductDescription />} />
+          <Route path="*" element={<ErrorPage/>} />
           </Route>
         </Routes>
       </Router>
