@@ -44,7 +44,7 @@ function Shop() {
     });
 
   return (
-    <div className="container mx-auto p-4 mt-8 flex flex-col lg:flex-row">
+    <div className="container mx-auto p-4 mt-8 flex flex-col lg:flex-row min-h-screen">
       {/* Filters on top for mobile view */}
       <div className="w-full lg:w-1/4 lg:pr-8">
         <div>

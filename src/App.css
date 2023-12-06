@@ -1,12 +1,76 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-#logo{
+#logo {
     font-family: 'Pacifico', cursive;
     font-weight: 600;
     font-size: 25px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: justify;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    height: 600px;
+    object-fit: cover;
+    padding: 60px;
+}
+
+.bslide1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+  background: none;
+  background-color: #fff;
+}
+
+/* Media query for tablet and mobile views */
+@media (max-width: 767px) {
+  .hero {
+    background: none;
+    background-color: #fff;
+  }
+    .bslide1 {
+        flex-direction: column;
+    }
+    .swiper-slide img {
+      display: block;
+      height: 500px;
+      object-fit: cover;
+      padding: 60px;
+  }
+}
+
+/* Media query for desktop view */
+@media (min-width: 1024px) {
+    .bslide1 {
+        flex-direction: row;
+    }
+    .hero {
+      display: flex;
+      padding: 5%;
+      background: url(./assets/Content.png);
+      background-color: #fff;
+      height: 600px;
+      background-repeat: no-repeat;  /* Set background-repeat to no-repeat */
+      background-position: right;    /* Position the background image to the right */
+    }
+    
 }

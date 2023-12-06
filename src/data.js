@@ -2,6 +2,7 @@ export const storeData = [
     {
       productId: 1,
       name: "Harry Potter and the Chamber of Secrets",
+      featured: "Yes",
       price: 245.00,
       genre: "Action & Adventure",
       author: "J.K. Rowling",
@@ -38,6 +39,7 @@ export const storeData = [
     {
       productId: 15,
       name: "Attack on Titan Season 1 Part 1 Manga Box",
+      featured: "Yes",
       price: 1919.00,
       genre: "Action & Adventure",
       author: "Hajime Isayama",
@@ -83,6 +85,7 @@ export const storeData = [
       {
         productId: 17,
         name: "Ikigai",
+        featured: "Yes",
         price: 346.00,
         genre: "Health, Family & Personal Development",
         author: "Heather Cleary",
@@ -92,6 +95,7 @@ export const storeData = [
       {
         productId: 8,
         name: "Rework",
+        featured: "Yes",
         price: 416.00,
         genre: "Business",
         author: "David Heinemeier HanssonDavid",
@@ -138,6 +142,7 @@ export const storeData = [
       {
         productId: 13,
         name: "TO KILL A MOCKINGBIRD ",
+        featured: "Yes",
         price: 245.00,
         genre: "Fiction",
         author: "Harper Lee",

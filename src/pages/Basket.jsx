@@ -12,7 +12,7 @@ function Basket() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 my-4 min-h-screen">
       <div className="mt-8">
         <h3 className="text-2xl font-semibold mb-4">Your Basket</h3>
 
