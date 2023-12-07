@@ -21,7 +21,7 @@ function App() {
           <Route path="/author" element={<Author />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/product/:name/:id" element={<ProductDescription />} />
-          <Route path="*" element={<ErrorPage/>} />
+          <Route path="/404" element={<ErrorPage/>} />
           </Route>
         </Routes>
       </Router>
