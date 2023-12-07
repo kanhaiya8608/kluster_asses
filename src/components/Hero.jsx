@@ -8,7 +8,7 @@ const Hero = () => {
     navigate('/product');
   }
   return (
-    <div className='bg-white h-50 flex items-center justify-between'>
+    <div className='bg-white h-50 flex items-center justify-between overflow-hidden'>
         <div className='flex flex-col gap-6 justify-between p-4 m-6 md:m-8 md:p-8'>
         <h1 className='uppercase text-6xl  md:text-8xl capitalize font-bold'>read and add 
 your insight
