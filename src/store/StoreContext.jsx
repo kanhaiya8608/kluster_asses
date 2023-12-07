@@ -1,11 +1,34 @@
-// StoreContext.js
-import { createContext, useReducer } from 'react';
-import reducer, { initialState } from './reducer';
-
+import { createContext, useReducer, useEffect } from 'react';
+import { StoreReducer, initialState } from './reducer';
 export const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(StoreReducer, initialState);
+
+  useEffect(() => {
+    // Retrieve the cart data from local storage on component mount
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      const parsedCart = JSON.parse(savedCart);
+      dispatch({
+        type: 'add',
+        payload: parsedCart.products,
+      });
+      dispatch({
+        type: 'update price',
+        payload: parsedCart.total,
+      });
+    }
+  }, []); // Empty dependency array ensures this effect runs only on mount
+
+  const saveToLocalStorage = (products, total) => {
+    // Save the cart data to local storage
+    const cartData = {
+      products,
+      total,
+    };
+    localStorage.setItem('cart', JSON.stringify(cartData));
+  };
 
   const addToBasket = (product) => {
     const updatedBasket = [...state.products];
@@ -14,10 +37,8 @@ export const StoreProvider = ({ children }) => {
     );
 
     if (existingProduct) {
-      // If product already exists, increase count
       existingProduct.count += 1;
     } else {
-      // If it's a new product, add it with count 1
       updatedBasket.push({ ...product, count: 1 });
     }
 
@@ -27,6 +48,8 @@ export const StoreProvider = ({ children }) => {
       type: 'add',
       payload: updatedBasket,
     });
+
+    saveToLocalStorage(updatedBasket, state.total);
   };
 
   const removeFromBasket = (product) => {
@@ -40,6 +63,8 @@ export const StoreProvider = ({ children }) => {
       type: 'remove',
       payload: updatedBasket,
     });
+
+    saveToLocalStorage(updatedBasket, state.total);
   };
 
   const updateCount = (product, newCount) => {
@@ -53,6 +78,8 @@ export const StoreProvider = ({ children }) => {
       type: 'update count',
       payload: updatedBasket,
     });
+
+    saveToLocalStorage(updatedBasket, state.total);
   };
 
   const updatePrice = (products) => {
@@ -67,14 +94,14 @@ export const StoreProvider = ({ children }) => {
     });
   };
 
-
   const removeAll = () => {
-    // Reset the basket to an empty array and update the total price
     updatePrice([]);
-    
     dispatch({
       type: 'removeAll',
     });
+
+    // Clear the cart data from local storage when removing all items
+    localStorage.removeItem('cart');
   };
 
   const value = {
