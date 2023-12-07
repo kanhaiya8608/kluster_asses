@@ -20,9 +20,9 @@ const ProductDescription = () => {
   };
 
   return (
-    <div className="flex h-screen container mx-auto">
+    <div className="flex min-h-screen container mx-auto">
       <div className="container mx-auto p-4">
-        <h2 className="text-6xl py-2 font-semibold mb-4">{productDetails.name}</h2>
+        <h2 className="text-2xl md:text-6xl py-2 font-semibold mb-4">{productDetails.name}</h2>
         <div className="grid grid-cols-1 content-center md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Display image on the left for desktop and on top for mobile */}
           <div className="flex flex-col items-center">
